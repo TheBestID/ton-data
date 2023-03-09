@@ -1,12 +1,15 @@
 {
   "attributes" : [
     {
+      "trait_type" : "Location",
+      "value" : "Moscow"
+    },
+    {
       "trait_type" : "Number of students",
-      "value" : 4
+      "value" : 10800
     }
   ],
-  "description" : "Best room in MIPT 2nd dormitory.",
-  "external_url" : "https://example.com/?token_id=2",
-  "image" : "https://raw.githubusercontent.com/TheBestID/ton-contracts/main/collection/data/my2cpWyPnng.jpg",
-  "name" : "235 room"
+  "description" : "Top-3 Russian univercity in CS.",
+  "image" : "https://raw.githubusercontent.com/TheBestID/ton-contracts/main/collection/data/mipt_logo.jpg",
+  "name" : "MIPT"
 }
