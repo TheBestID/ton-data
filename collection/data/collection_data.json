@@ -1,5 +1,5 @@
 {
-    "name": "Marketplace Creatures",
-    "description": "Marketplace Creatures are adorable aquatic beings primarily for demonstrating what can be done using the Marketplace platform. Adopt one today to try out all the Marketplace buying, selling, and bidding feature set.",
-    "image": "https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg"
+    "name": "My collection",
+    "description": "I like this collection!",
+    "image" : "https://raw.githubusercontent.com/TheBestID/ton-contracts/main/collection/data/mfti2.jpeg"
 }
