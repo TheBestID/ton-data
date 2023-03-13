@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import json
 from datetime import date
-from push_to_git import load_data_to_git
+import os
 """ 
 Given following arguments:
 company_logo -- link to logo, such as https://raw.githubusercontent.com/TheBestID/ton-contracts/main/collection/data/mfti2.jpeg 
@@ -9,16 +9,14 @@ company_name, vacancy_name
 Three wallets -- company_wallet, applicant_wallet, referral_wallet
 """
 
-company_name = 'Yandex'
-vacancy_name = 'SWE intern'
-ya_logo = 'https://raw.githubusercontent.com/TheBestID/ton-contracts/main/collection/data/mfti2.jpeg'
 
-wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
-applicant_wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
-referral_wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
-vacancy_id = 0
-
-# description = "Hired " + vacancy_name + " at " + company_name
+def create_data_directory_if_not_exist():
+    data_path = os.path.relpath(r"../data/", os.path.dirname(__file__))
+    if not os.path.exists(data_path):
+        os.makedirs(data_path)
+        print("Successfully created data directory")
+    else:
+        print("Data directory already exists")
 
 
 def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company_wallet, applicant_wallet, referral_wallet, vacancy_id):
@@ -61,24 +59,28 @@ def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company
     }
 
     roles = ['Company', 'Referral', 'Applicant']
-
+    create_data_directory_if_not_exist()
+    data_path = os.path.relpath(r"../data/", os.path.dirname(__file__))
     for role in roles:
         current = template.copy()
         current["attributes"][4]["value"] = role
-        try:
-            with open(f"{role}-{vacancy_id}.json", "w") as outfile:
-                json.dump(current, outfile)
-            print(f"Successfully generated {role}-{vacancy_id}.json")
-        except:
-            print(f"Failed to generate {role}-{vacancy_id}.json")
+        # try:
+        with open(data_path + f"/{role}-{vacancy_id}.json", "w") as outfile:
+            json.dump(current, outfile)
+        print(f"Successfully generated {role}-{vacancy_id}.json")
+        # except:
+        #     print(f"Failed to generate {role}-{vacancy_id}.json")
 
 
-def create_metadata_for_vacancy(company_name, vacancy_name, company_logo, company_wallet, applicant_wallet, referral_wallet, vacancy_id):
-    generate_jsons_for_vacancy(company_name, vacancy_name, company_logo,
-                               company_wallet, applicant_wallet, referral_wallet, vacancy_id)
-    load_data_to_git(vacancy_id)
-    print(f"Data for vacancy {vacancy_id} is generated.")
+company_name = 'Yandex'
+vacancy_name = 'SWE intern'
+ya_logo = 'https://raw.githubusercontent.com/TheBestID/ton-contracts/main/collection/data/mfti2.jpeg'
+
+wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
+applicant_wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
+referral_wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
+vacancy_id = 0
 
 
-create_metadata_for_vacancy('Yandex', 'SWE intern',
-                           ya_logo, wallet, wallet, wallet, vacancy_id)
+generate_jsons_for_vacancy(company_name, vacancy_name, ya_logo,
+                           wallet, applicant_wallet, referral_wallet, vacancy_id)

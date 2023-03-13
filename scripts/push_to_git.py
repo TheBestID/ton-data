@@ -7,8 +7,8 @@ repo = Repo(PATH_OF_GIT_REPO)
 roles = ['Company', 'Referral', 'Applicant']
 def git_add(rep, vacancy_id):
     for role in roles:
-        rep.git.add(f'{role}-{vacancy_id}.json')
-        print(f'Added {role}-{vacancy_id}.json.')
+        rep.git.add(f'data/{role}-{vacancy_id}.json')
+        print(f'Added data/{role}-{vacancy_id}.json.')
 
 def git_commit(rep, vacancy_id):
     rep.index.commit(f"Add metadata files for vacancy {vacancy_id}.")
