@@ -20,8 +20,7 @@ def create_data_directory_if_not_exist():
 
 
 def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company_wallet, applicant_wallet, referral_wallet, vacancy_id):
-    description = f"Hired {vacancy_name} at {company_name}"
-    name_for_vacancy = f"Vacancy {vacancy_id}"
+    name_for_vacancy = f"Vacancy {vacancy_name} for {company_name}"
     template = {
         "attributes": [
             {
@@ -53,7 +52,7 @@ def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company
                 "value": f'{vacancy_id}'
             },
         ],
-        "description": f'{description}',
+        "description": f"Hired {vacancy_name} at {company_name}, powered by SoulDev.",
         "image": f'{company_logo}',
         "name": f'{name_for_vacancy}'
     }
