@@ -1,4 +1,4 @@
-# ton-contracts
+# Ton data
 
 ## Dependencies:
 - `pip install gitpython`
@@ -18,4 +18,5 @@
 Of course you need to have access to this repository.
 3. Here, in this repo, in [data](https://github.com/TheBestID/ton-contracts/tree/main/data) folder you will get three `.json` files, ending on vacancy_id (like `Company-0.json` for `vacancy_id == 0`). You can use them in deploying scripts.
   
+P.S. Script assumes that you run your program from `/scripts` folder. If not, you should change relative `PATH_OF_GIT_REPO` in [push_to_git.py](https://github.com/TheBestID/ton-data/blob/main/scripts/push_to_git.py).  
   
