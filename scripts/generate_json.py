@@ -70,17 +70,3 @@ def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company
         with open(data_path + f"/{role}-{vacancy_id}.json", "w") as outfile:
             json.dump(current, outfile)
         print(f"Successfully generated {role}-{vacancy_id}.json")
-
-
-company_name = 'Yandex'
-vacancy_name = 'SWE intern'
-ya_logo = 'https://raw.githubusercontent.com/TheBestID/ton-contracts/main/collection/data/mfti2.jpeg'
-
-wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
-applicant_wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
-referral_wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
-vacancy_id = 0
-hiring_process_start_date = date(2023, 3, 8)
-
-generate_jsons_for_vacancy(company_name, vacancy_name, ya_logo,
-                           wallet, applicant_wallet, referral_wallet, vacancy_id, hiring_process_start_date)
