@@ -14,7 +14,8 @@
   - `company_wallet`, 
   - `applicant_wallet`, 
   - `referral_wallet`, 
-  - `vacancy_id` (unique id, we get it from backend).
+  - `vacancy_id` (unique id, we get it from backend),
+  - `hiring_process_start_date` - when hiring process started.
 Of course you need to have access to this repository.
 3. Here, in this repo, in [data](https://github.com/TheBestID/ton-contracts/tree/main/data) folder you will get three `.json` files, ending on vacancy_id (like `Company-0.json` for `vacancy_id == 0`). You can use them in deploying scripts.
   
