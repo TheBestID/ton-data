@@ -48,7 +48,7 @@ def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company
                 "value": f'{date.today()}'
             },
             {
-                "trait_type": "Duration of hiring process",
+                "trait_type": "Duration of hiring",
                 "value": f'{(date.today() - hiring_process_start_date).days}'
             },
             {
