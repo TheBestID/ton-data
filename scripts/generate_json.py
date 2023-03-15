@@ -19,7 +19,7 @@ def create_data_directory_if_not_exist():
         print("Data directory already exists")
 
 
-def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company_wallet, applicant_wallet, referral_wallet, vacancy_id):
+def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company_wallet, applicant_wallet, referral_wallet, vacancy_id, hiring_process_start_date):
     name_for_vacancy = f"Vacancy {vacancy_name} for {company_name}"
     template = {
         "attributes": [
@@ -48,6 +48,10 @@ def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company
                 "value": f'{date.today()}'
             },
             {
+                "trait_type": "Duration of hiring process",
+                "value": f'{(date.today() - hiring_process_start_date).days}'
+            },
+            {
                 "trait_type": "Vacancy ID",
                 "value": f'{vacancy_id}'
             },
@@ -63,12 +67,9 @@ def generate_jsons_for_vacancy(company_name, vacancy_name, company_logo, company
     for role in roles:
         current = template.copy()
         current["attributes"][4]["value"] = role
-        # try:
         with open(data_path + f"/{role}-{vacancy_id}.json", "w") as outfile:
             json.dump(current, outfile)
         print(f"Successfully generated {role}-{vacancy_id}.json")
-        # except:
-        #     print(f"Failed to generate {role}-{vacancy_id}.json")
 
 
 company_name = 'Yandex'
@@ -79,7 +80,7 @@ wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
 applicant_wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
 referral_wallet = "kQBf4BVi8IQ5iILFqsr0WHnyg1VRgZRBbjBv_ji5jc6Urpqq"
 vacancy_id = 0
-
+hiring_process_start_date = date(2023, 3, 8)
 
 generate_jsons_for_vacancy(company_name, vacancy_name, ya_logo,
-                           wallet, applicant_wallet, referral_wallet, vacancy_id)
+                           wallet, applicant_wallet, referral_wallet, vacancy_id, hiring_process_start_date)
